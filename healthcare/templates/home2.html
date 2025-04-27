@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vcube Hospitals - Home</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #fce4ec);
+            color: #333;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1e1b3a;
+            padding: 15px 30px;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #00e5ff;
+        }
+
+        .hero {
+            padding: 130px 30px 60px;
+            background: linear-gradient(to right, #4caf50, #81c784);
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .hero-img {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .hero-img img {
+            width: 450px;
+            height: 230px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .content {
+            padding: 50px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            margin-top: 0;
+            color: #0a043c;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .section ul {
+            padding-left: 20px;
+            line-height: 1.8;
+        }
+
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .service-card {
+            flex: 1 1 280px;
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            color: #2e7d32;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .testimonial {
+            font-style: italic;
+            color: #444;
+            font-size: 16px;
+        }
+
+        .contact {
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta a {
+            background-color: #0a043c;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .cta a:hover {
+            background-color: #1565c0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #0a043c;
+            color: white;
+            font-size: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .services {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-img img {
+                width: 90%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">Vcube Hospitals</div>
+        <ul>
+            <li><a href="{% url 'home2' %}">Home</a></li>
+            <li><a href="{% url 'bookappointment2' %}">Book Appointment</a></li>
+            <li><a href="{% url 'doctorspage' %}">Doctors</a></li>
+            <li><a href="{% url 'validate' %}">🔓</a></li>
+        </ul>
+    </div>
+
+    <div class="hero">
+        <h1>Welcome to Vcube Hospitals</h1>
+        <p>Your trusted partner for quality healthcare. Book appointments online and connect with top medical professionals.</p>
+        <div class="hero-img">
+            <img src="{% static 'images/vcube.png' %}" alt="Vcube Hospital">
+        </div>
+    </div>
+
+    <div class="content">
+
+        <div class="section">
+            <h2>Why Choose Us?</h2>
+            <ul>
+                <li>🕒 24/7 Online Appointment Booking</li>
+                <li>👩‍⚕️ Experienced & Verified Doctors</li>
+                <li>🏥 Advanced Medical Equipment</li>
+                <li>🛌 Clean, Safe & Comfortable Environment</li>
+                <li>💖 Personalized Patient Care</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Our Services</h2>
+            <div class="services">
+                <div class="service-card">General Medicine</div>
+                <div class="service-card">Pediatrics</div>
+                <div class="service-card">Cardiology</div>
+                <div class="service-card">Dermatology</div>
+                <div class="service-card">Orthopedics</div>
+                <div class="service-card">Neurology</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>What Our Patients Say</h2>
+            <p class="testimonial">“Vcube Hospitals provided excellent care and professionalism. Booking was seamless and the staff were very supportive throughout my recovery.”<br>– Priya S.</p>
+        </div>
+
+        <div class="section">
+            <h2>Contact Us</h2>
+            <p class="contact">
+                📍 Address: 123 Health Street, Care City, India<br>
+                📞 Phone: +91-9876543210<br>
+                ✉️ Email: <a href="mailto:contact@vcubehospitals.com">contact@vcubehospitals.com</a>
+            </p>
+        </div>
+
+        <div class="cta">
+            <a href="{% url 'bookappointment2' %}">Book an Appointment Now</a>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Vcube Hospitals. All rights reserved.
+    </footer>
+
+</body>
+</html>

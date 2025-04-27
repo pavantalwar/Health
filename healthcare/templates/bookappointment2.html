@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Appointment</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f0f4f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1976d2;
+            padding: 15px 30px;
+            color: white;
+        }
+
+        .navbar .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+        }
+
+        .navbar ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .content-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px; /* ensures space below navbar */
+        }
+
+        .appointment-box {
+            background-color: white;
+            padding: 30px 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            width: 360px;
+        }
+
+        .appointment-box h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 5px;
+            color: #444;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="time"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            font-size: 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Vcude Hospitals</div>
+        <ul>
+            <li><a href="{% url 'home2' %}">Home</a></li>
+            <li><a href="{% url 'bookappointment2' %}">Book Appointment</a></li>
+            <li><a href="{% url 'doctorspage' %}">Doctors</a></li>
+        </ul>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="appointment-box">
+            <h2>Book Appointment</h2>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <label>Patient Name:</label>
+                <input type="text" name="pname" placeholder="Enter patient name">
+
+                <label>Select Doctor:</label>
+                <select name="doctor" required>
+                    <option selected disabled>Choose Doctor</option>
+                    {% for doctor in dtr %}
+                        <option value="{{ doctor.id }}">{{ doctor.name }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="">Email</label>
+                <input type="text" name="email" id="" placeholder="enter your email">
+
+                <label>Date:</label>
+                <input type="date" name="date">
+
+                <label>Time:</label>
+                <input type="time" name="time">
+
+                <label>Description:</label>
+                <input type="text" name="desc" placeholder="Brief description...">
+
+                <input type="submit" value="Book Appointment">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
